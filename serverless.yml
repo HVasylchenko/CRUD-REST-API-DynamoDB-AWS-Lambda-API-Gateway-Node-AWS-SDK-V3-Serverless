@@ -3,7 +3,7 @@ service: dynamodb-crud-api
 provider:
   name: aws
   runtime: nodejs14.x
-  stage: dev
+  stage: dev1
   region: eu-central-1
   environment:
     DYNAMODB_TABLE_NAME: ${self:custom.usersTableName}
@@ -15,7 +15,7 @@ plugins:
   - serverless-iam-roles-per-function
 
 functions:
-  getPost:
+  getUser:
     handler: api.getUser
     name: get-user
     memorySize: 128 # mb
@@ -29,7 +29,7 @@ functions:
         Action:
           - "dynamodb:GetItem"
         Resource: !GetAtt UsersTable.Arn
-  createPost:
+  createUser:
     handler: api.createUser
     name: create-user
     memorySize: 128 # mb
@@ -43,7 +43,7 @@ functions:
         Action:
           - "dynamodb:PutItem"
         Resource: !GetAtt UsersTable.Arn
-  updatePost:
+  updateUser:
     handler: api.updateUser
     name: update-user
     memorySize: 128 # mb
@@ -57,7 +57,7 @@ functions:
         Action:
           - "dynamodb:UpdateItem"
         Resource: !GetAtt UsersTable.Arn
-  deletePost:
+  deleteUser:
     handler: api.deleteUser
     name: delete-user
     memorySize: 128 # mb
@@ -71,7 +71,7 @@ functions:
         Action:
           - "dynamodb:DeleteItem"
         Resource: !GetAtt UsersTable.Arn
-  getAllPosts:
+  getAllUsers:
     handler: api.getAllUsers
     name: get-all-users
     memorySize: 128 # mb
