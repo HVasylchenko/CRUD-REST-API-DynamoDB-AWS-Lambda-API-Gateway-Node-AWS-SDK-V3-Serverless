@@ -3,7 +3,7 @@ service: dynamodb-crud-api
 provider:
   name: aws
   runtime: nodejs14.x
-  stage: dev1
+  stage: dev
   region: eu-central-1
   environment:
     DYNAMODB_TABLE_NAME: ${self:custom.usersTableName}
