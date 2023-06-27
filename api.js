@@ -139,7 +139,8 @@ const getAllUsers = async () => {
 
         response.body = JSON.stringify({
             message: "Successfully retrieved all users",
-            data: Items.map((item) => unmarshall(item)),
+            data: Items.map((item) => converter.unmarshall(item)),
+            // data: Items.map((item) => unmarshall(item)),
             // Items,
         });
     } catch (e) {
